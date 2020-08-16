@@ -108,6 +108,12 @@
   max-width: 15rem;
 }
 
+.chevron-align {
+  position: relative;
+  bottom: 0.12rem;
+  right: 0.3rem;
+}
+
 .shimmer::after {
   position: absolute;
   top: 0;

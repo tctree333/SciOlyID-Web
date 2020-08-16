@@ -1,0 +1,34 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+    <title>SciOlyID</title>
+{% endblock %}
+
+{% block header %}
+    <div class="mt-4">
+        <h1 class="px-5 mx-auto mt-8 mb-6 text-4xl font-semibold text-center">Navigation Menu</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container max-w-4xl px-5 pb-4 mx-auto bg-white sm:px-8">
+        <ol class="ml-2 text-xl text-gray-800">
+            {% for item in info %}
+                <li class="pl-3 mb-3 font-medium">{{ item.name }}
+                    <svg class="inline w-5 h-5 text-yellow-700 fill-current chevron-align" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                    <ol class="block mb-4 ml-4 font-normal list-disc list-inside">
+                        <li>
+                            <a class="underline" href="/{{ item.id }}/upload">Upload Images</a>
+                        </li>
+                        <li>
+                            <a class="underline" href="/{{ item.id }}/verify">Verify Images</a>
+                        </li>
+                    </ol>
+                </li>
+            {% endfor %}
+        </ol>
+        <img src="/icons/illustrations/navigation.svg" class="w-full mx-auto my-8 rounded sm:w-2/3 md:w-1/2">
+    </div>
+{% endblock %}

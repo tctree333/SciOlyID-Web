@@ -5,18 +5,39 @@
     <div class="block md:hidden">
         <a href="/menu">
             <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
             </svg>
             <span class="sr-only">Navigation Menu</span>
         </a>
     </div>
 
-    <p class="text-2xl sm:text-3xl md:pl-5">
-        <a href="/">SciOly-ID</a>
-    </p>
+    <div class="flex items-center justify-start">
+        <p class="text-2xl sm:text-3xl md:pl-5">
+            <a href="/">SciOly-ID</a>
+        </p>
+
+        <ol class="flex-wrap justify-end hidden pt-1 ml-16 text-lg md:flex">
+            {% for item in info %}
+                <li class="ml-auto mr-6 lg:ml-0 group">{{ item.name }}
+                    <svg class="inline w-5 h-5 text-indigo-300 fill-current scrolled:text-indigo-700 chevron-align" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path class="inline group-hover:hidden" d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/>
+                        <path class="hidden group-hover:inline" d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                    <ol class="absolute hidden p-3 text-gray-800 bg-purple-200 rounded-sm shadow group-hover:block">
+                        <li>
+                            <a href="/{{ item.id }}/upload">Upload Images</a>
+                        </li>
+                        <li>
+                            <a href="/{{ item.id }}/verify">Verify Images</a>
+                        </li>
+                    </ol>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
 
     <div>
-        <button id="btnLogin" class="px-3 py-2 text-xl font-medium btn btn-indigo">Login</button>
+        <button id="btnLogin" class="px-3 py-2 my-1 text-xl font-medium btn btn-indigo">Login</button>
         <div id="profile" class="hidden group">
             <div class="flex items-center justify-end md:px-3 md:py-1">
                 <p id="username" class="hidden mr-4 md:block"></p>
