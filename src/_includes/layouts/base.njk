@@ -15,9 +15,11 @@
             {% block header %}{% endblock %}
         </header>
 
-        {% block content %}
-            {{ content | safe }}
-        {% endblock %}
+        <div class="min-h-80">
+            {% block content %}
+                {{ content | safe }}
+            {% endblock %}
+        </div>
 
         <footer class="text-gray-200 bg-indigo-900">
             {% block footer %}{% endblock %}

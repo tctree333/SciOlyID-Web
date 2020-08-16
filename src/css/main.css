@@ -108,6 +108,10 @@
   max-width: 15rem;
 }
 
+.min-h-80 {
+  min-height: 80vh;
+}
+
 .chevron-align {
   position: relative;
   bottom: 0.12rem;
