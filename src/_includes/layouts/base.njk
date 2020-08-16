@@ -19,12 +19,23 @@
             {{ content | safe }}
         {% endblock %}
 
-        <div class="h-48">
+        <footer class="text-gray-200 bg-indigo-900">
             {% block footer %}{% endblock %}
-        </div>
-        {% block scripts %}
-            
-        {% endblock %}
+            <div class="pt-4 pb-2">
+                <ol class="flex flex-wrap items-center justify-center w-full px-6 py-3 text-xl text-white text-bold">
+                    <li class="mx-4 hover:underline">
+                        <a href="/source">Open Source</a>
+                    </li>
+                    <li class="mx-4 hover:underline">
+                        <a href="/discord">Discord</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="flex items-center justify-center w-full pt-4 pb-8">
+                <p>SciOlyID</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 980" class="inline-block w-4 h-4 mx-2 fill-current"><circle cx="490" cy="490" r="440" fill="none" stroke="#fff" stroke-width="100"/><path d="M219,428H350a150,150 0 1 1 0,125H219a275,275 0 1 0 0-125z"/></svg><p>{{ datetime.year }}</p>
+            </div>
+        </footer>
+        {% block scripts %}{% endblock %}
         <script defer src="/js/global{{ '.min' if environment.prod else '' }}.js"></script>
     </body>
 </html>

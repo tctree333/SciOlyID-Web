@@ -31,6 +31,9 @@ module.exports = {
     display: ['responsive', 'group-hover']
   },
   plugins: [
+    require('@tailwindcss/typography')({
+      modifiers: ['lg', 'xl']
+    }),
     plugin(function ({
       addVariant,
       e

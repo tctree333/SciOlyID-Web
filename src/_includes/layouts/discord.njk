@@ -1,0 +1,31 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+    <title>SciOlyID</title>
+    <meta name="description" content="Discord bots for Science Olympiad ID events.">
+{% endblock %}
+
+{% block header %}
+    <div class="mt-4">
+        <h1 class="px-5 mx-auto mt-8 mb-6 text-4xl font-semibold text-center">Join the Discord Servers to get started!</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container max-w-4xl px-5 pb-4 mx-auto bg-white sm:px-8">
+        <div class="my-8 text-xl text-gray-700">
+            <ul class="ml-4 list-disc list-inside">
+                {% for bot in info %}
+                    {% if bot.info.verificationServer %}
+                        <li>{{ bot.name }} - <a class="text-gray-800 underline" href="{{ bot.info.server }}">Support Server</a> | <a class="text-gray-800 underline" href="{{ bot.info.verificationServer }}">Image Adding Server</a>
+                        </li>
+                    {% else %}
+                        <li>{{ bot.name }} - <a class="text-gray-800 underline" href="{{ bot.info.server }}">Support/Image Adding Server</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <img src="/icons/illustrations/party.png" class="w-full mx-auto my-8 rounded sm:w-5/6 md:w-3/4">
+    </div>
+{% endblock %}
