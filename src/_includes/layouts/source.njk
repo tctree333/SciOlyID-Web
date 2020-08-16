@@ -1,35 +1,39 @@
 {% extends "layouts/base.njk" %}
 
 {% block head %}
-<title>SciOlyID</title>
-<meta name="description" content="Discord bots for Science Olympiad ID events.">
+    <title>SciOlyID</title>
+    <meta name="description" content="Discord bots for Science Olympiad ID events.">
 {% endblock %}
 
 {% block header %}
-<div class="mt-4">
-    <h1 class="px-5 mx-auto mt-8 mb-6 text-4xl font-semibold text-center">Open Source</h1>
-</div>
+    <div class="mt-4">
+        <h1 class="px-5 mx-auto mt-8 mb-6 text-4xl font-semibold text-center">Open Source</h1>
+    </div>
 {% endblock %}
 
 {% block content %}
-<div class="container max-w-4xl px-5 pb-4 mx-auto bg-white sm:px-8">
-    <div>
-        <h2 class="text-3xl text-center">This website and all the bots are fully open source!</h1>
-        <h3 class="my-2 text-2xl text-center text-gray-700">We welcome all contributions, or just take a peek behind the scenes.</h2>
-    </div>
-    <div class="my-8 prose prose-lg xl:prose-xl">
-        <ul>
-            <li><a href="https://github.com/tctree333/SciOlyID-Web">This website</a> is statically generated with <a href="https://www.11ty.dev/">Eleventy</a> and hosted on <a href="https://www.netlify.com/">Netlify</a>, with a Python <a href="https://github.com/tctree333/SciOly-ID"> Flask API backend</a>.</li>
-            <li>With the exception of Bird-ID, the Discord bots themselves run off the <a href="https://github.com/tctree333/SciOly-ID">sciolyid</a> Python package.</li>
-            <ul class="ml-8">
-                <li>Bird ID (Ornithology) - <a href="https://github.com/tctree333/Bird-ID">Source</a></li>
-                <li>Fossil ID (Fossils) - <a href="https://github.com/tctree333/Fossil-ID">Source</a></li>
-                <li>Star ID (Reach for the Stars) - <a href="https://github.com/tctree333/Reach-For-The-Stars-Bot">Source</a></li>
+    <div class="container max-w-4xl px-5 pb-4 mx-auto bg-white sm:px-8">
+        <div>
+            <h2 class="text-3xl text-center">This website and all the bots are fully open source!</h1>
+            <h3 class="my-2 text-2xl text-center text-gray-700">We welcome all contributions, or just take a peek behind the scenes.</h2>
+        </div>
+        <div class="my-8 prose prose-lg xl:prose-xl">
+            <ul>
+                <li>
+                    <a href="https://github.com/tctree333/SciOlyID-Web">This website</a> is statically generated with <a href="https://www.11ty.dev/">Eleventy</a> and hosted on <a href="https://www.netlify.com/">Netlify</a>, with a Python <a href="https://github.com/tctree333/SciOly-ID"> Flask API backend</a>.</li>
+                <li>With the exception of Bird-ID, the Discord bots themselves run off the <a href="https://github.com/tctree333/SciOly-ID">sciolyid</a> Python package.</li>
+                <ul class="ml-8">
+                    <li>Bird ID (Ornithology) - <a href="https://github.com/tctree333/Bird-ID">Source</a>
+                    </li>
+                    <li>Fossil ID (Fossils) - <a href="https://github.com/tctree333/Fossil-ID">Source</a>
+                    </li>
+                    <li>Star ID (Reach for the Stars) - <a href="https://github.com/tctree333/Reach-For-The-Stars-Bot">Source</a>
+                    </li>
+                </ul>
+                <li>Bird-ID's site is a <a href="https://github.com/tctree333/Bird-ID-site">separate repository</a> for now since it was created earlier, we may merge it with this site in the future. It also uses a <a href="https://github.com/tctree333/Bird-ID/tree/master/web">Flask API backend</a>.</li>
+                <li>All of the Python stuff (bots, apis) is hosted on <a href="https://galaxygate.net/">GalaxyGate</a> using <a href="http://dokku.viewdocs.io/dokku/">Dokku</a> and deployed using <a href="https://github.com/tctree333/SciOlyID-Actions">custom GitHub actions</a>.</li>
             </ul>
-            <li>Bird-ID's site is a <a href="https://github.com/tctree333/Bird-ID-site">separate repository</a> for now since it was created earlier, we may merge it with this site in the future. It also uses a <a href="https://github.com/tctree333/Bird-ID/tree/master/web">Flask API backend</a>.</li>
-            <li>All of the Python stuff (bots, apis) is hosted on <a href="https://galaxygate.net/">GalaxyGate</a> using <a href="http://dokku.viewdocs.io/dokku/">Dokku</a> and deployed using <a href="https://github.com/tctree333/SciOlyID-Actions">custom GitHub actions</a>.</li>
-        </ul>
-        <p>Most things here are licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>.</p>
+            <p>Most things here are licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>.</p>
+        </div>
     </div>
-</div>
 {% endblock %}
