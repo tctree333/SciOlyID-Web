@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/css/main.css"/>
+        {% block head %}{% endblock %}
+        {# {% include "_favicons.njk" %} #}
+        {# <script defer src="/js/lazysizes.min.js"></script> #}
+    </head>
+    <body>
+        {% include "_nav.njk" %}
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+
+        {% block content %}
+            {{ content | safe }}
+        {% endblock %}
+
+        <div class="h-48">
+            {% block footer %}{% endblock %}
+        </div>
+        {% block scripts %}
+            
+        {% endblock %}
+        <script defer src="/js/global{{ '.min' if environment.prod else '' }}.js"></script>
+    </body>
+</html>

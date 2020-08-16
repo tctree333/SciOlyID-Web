@@ -1,0 +1,129 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+    <title>Upload Images | SciOlyID</title>
+    <meta name="description" content="Upload new bot images!">
+{% endblock %}
+
+{% block header %}
+    <div class="mt-4">
+        <h1 class="px-5 mx-auto mt-2 mb-6 text-3xl font-semibold text-center">Upload Images: <div>{{botInfo.name}}</div>
+        </h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container max-w-4xl px-5 pb-4 mx-auto bg-white sm:px-8">
+        <div class="flex flex-wrap items-center justify-center my-2">
+            <button id="clickable" class="p-2 m-2 btn btn-teal">Add files</button>
+            <button id="btnUrl" class="p-2 m-2 btn btn-indigo">Add file from URL</button>
+            <button id="btnSave" class="p-2 m-2 btn btn-green" disabled="disabled">Ready to verify (<span
+                id="uploadCount">0</span> images)</button>
+        </div>
+        <div id="saveInfo" class="max-w-xl p-4 mx-auto bg-gray-100 rounded shadow">
+            <p class="text-lg font-medium text-center">Saving...</p>
+            <div class="relative w-5/6 mx-auto my-2 bg-gray-200 rounded">
+                <div id="saveProgress" class="relative top-0 h-6 overflow-hidden bg-blue-500 rounded shimmer"></div>
+            </div>
+            <p id="saveStatus" class="text-center text-gray-600"></p>
+        </div>
+        <div id="previews" class="mx-auto my-4 bg-gray-300 rounded-md">
+            <div class="w-full p-5 mx-auto max-w-60" data-placeholder>
+                <img src="/icons/illustrations/add.svg"/>
+                <p class="mt-2 text-sm text-center text-gray-600">You don't have any images right now.<br>Get started by
+                adding some!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed inset-x-0 bottom-0 w-full">
+        <div id="alertContainer" class="flex flex-col-reverse items-center justify-end float-right w-full max-w-sm"></div>
+    </div>
+
+    <div id="addUrlPopup" class="fixed inset-x-0 top-0 w-11/12 max-w-5xl px-4 py-6 mx-auto mt-24 bg-gray-300 rounded-md shadow-md">
+        <button id="btnUrlClose" class="absolute top-0 right-0 w-6 h-6 m-4">
+            <img src="/icons/icons/close.svg" alt="close"/>
+        </button>
+        <label class="m-2 text-lg font-semibold" for="inputUrl">URL of image:</label>
+        <div class="flex flex-row flex-no-wrap items-center justify-start">
+            <input id="inputUrl" type="url" placeholder="Paste the image URL here!"
+            class="w-5/6 py-2 pl-2 my-2 ml-1 rounded-l focus:outline-none focus:shadow-outline" required="required"/>
+            <button id="btnUrlOk" class="p-2 px-3 my-2 mr-4 rounded-r btn btn-teal">Ok!</button>
+        </div>
+        <p id="urlError" class="p-2 mx-1 my-2 text-red-800 bg-red-300 rounded"></p>
+        <img id="imgUrlPreview" class="mx-auto max-h-1/2"/>
+        <button id="btnUrlConfirm" class="p-2 mx-2 mt-2 btn btn-blue">Confirm</button>
+        <button id="btnUrlCancel" class="px-3 py-2 mt-2 mr-2 btn btn-gray">Cancel</button>
+        <input id="fileStore" type="file" class="hidden" hidden=""/>
+    </div>
+
+    <template id="alertTemplate">
+        <div class="flex items-center justify-between w-11/12 p-3 mx-auto mb-2 align-middle transition-opacity duration-500 rounded-md shadow-md opacity-0 first:mb-4"
+        data-template>
+            <p class="text-lg" data-alert-text></p>
+            <button data-alert-close>
+                <img class="w-6 h-6" src="/icons/icons/close.svg" alt="close"/>
+            </button>
+        </div>
+    </template>
+
+    <template id="template">
+        <div class="px-5 py-5 sm:pt-4 sm:pb-2 even:bg-gray-200">
+            <input class="imageId" name="id" type="hidden" value="">
+            <div class="items-end justify-between sm:flex">
+                <div>
+                    <img class="mb-4 rounded sm:inline-block" data-dz-thumbnail/>
+                    <div class="leading-5 sm:inline-block sm:ml-2">
+                        <p class="mb-2 text-lg font-medium" data-dz-name></p>
+                        <p data-dz-size></p>
+                    </div>
+                </div>
+                <div class="sm:w-2/5">
+                    <div class="pb-3 mb-2 sm:pb-0 sm:mb-0 duplicates">
+                        <div class="mt-2 mb-1" hidden="hidden" data-text>
+                            <p class="font-medium">Possible Duplicates:</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="max-w-xs">
+                <p class="p-2 mb-2 text-green-800 bg-green-200 rounded" hidden="hidden" data-upload-status></p>
+                <p class="p-2 mb-2 text-red-800 bg-red-200 rounded" hidden="hidden" data-dz-errormessage></p>
+            </div>
+            <div class="mb-2 border-b-2 border-gray-500"></div>
+            <div class="relative max-w-xs mb-2 sm:inline-block">
+                <label>
+                    <span class="mr-2 font-medium">What item is this?</span>
+                    <select
+                    class="w-full max-w-xs px-2 py-2 pr-8 mt-2 bg-white border border-gray-400 rounded appearance-none hover:border-gray-500 focus:outline-none focus:shadow-outline disabled:border-gray-400 disabled:cursor-not-allowed disabled:opacity-50 itemPicker"
+                    name="id item">
+                        <option value="">--Please select one--</option>
+                        {% for group, items in botInfo.items %}
+                            <optgroup label="{{ group | title }}">
+                                {% for item in items | sort %}
+                                    <option value="{{ item }}">{{ item | title }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </label>
+                <img class="absolute bottom-0 right-0 w-4 h-4 m-3 text-gray-700" src="/icons/icons/cheveron-down.svg"/>
+            </div>
+            <div class="sm:float-right sm:inline-block sm:mt-3">
+                <button class="p-2 mt-3 mr-2 btn btn-green start">
+                    <span class="mr-3 animation" hidden="hidden"><img class="inline w-5 h-5 animate-spin"
+                        src="/icons/icons/refresh.svg"/></span>
+                    <span>Save</span>
+                </button>
+                <button class="p-2 mt-3 mr-2 btn btn-red" data-dz-remove>
+                    <span>Delete</span>
+                </button>
+            </div>
+        </div>
+    </template>
+{% endblock %}
+
+{% block scripts %}
+    <script defer src="/js/dropzone{{ '.min' if environment.prod else '' }}.js"></script>
+    <script defer src="/js/upload{{ '.min' if environment.prod else '' }}.js"></script>
+{% endblock %}

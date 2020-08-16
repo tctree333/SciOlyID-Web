@@ -1,0 +1,32 @@
+<nav class="fixed z-30 flex flex-wrap items-center justify-between w-full px-6 py-4 text-gray-200 transition duration-200 bg-indigo-600 scrolled:shadow-lg scrolled:bg-white"
+    aria-labelledby="primary-navigation">
+    <p class="sr-only" id="primary-navigation">Primary navigation</p>
+
+    <div class="block md:hidden scrolled:text-indigo-800">
+        <a href="/menu">
+            <svg class="w-6 h-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+            <span class="sr-only">Navigation Menu</span>
+        </a>
+    </div>
+
+    <p class="text-2xl sm:text-3xl scrolled:text-indigo-800 md:pl-5">
+        <a href="/">SciOly-ID</a>
+    </p>
+
+    <div>
+        <button id="btnLogin" class="px-3 py-2 text-xl font-medium btn btn-indigo">Login</button>
+        <div id="profile" class="hidden group">
+            <div class="flex items-center justify-end md:px-3 md:py-1">
+                <p id="username" class="hidden mr-4 md:block"></p>
+                <img id="imgProfile" class="h-10 rounded-full sm:h-12" alt="profile picture">
+            </div>
+            <div class="fixed top-0 right-0 hidden p-4 px-6 mt-16 mr-8 bg-gray-400 rounded shadow-md group-hover:block">
+                <button id="btnLogout" class="px-2 py-1 rounded-full shadow btn btn-red">Logout</button>
+            </div>
+        </div>
+    </div>
+
+</nav>
+<div class="h-20"></div>

@@ -1,0 +1,131 @@
+@tailwind base;
+
+@tailwind components;
+
+.btn {
+    @apply rounded shadow-sm;
+}
+
+.btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+}
+
+.btn-green {
+    @apply text-green-900 bg-green-400;
+}
+
+.btn-green:hover {
+    @apply bg-green-300;
+}
+
+.btn-green:disabled {
+    @apply bg-green-400;
+}
+
+.btn-blue {
+    @apply text-blue-900 bg-blue-400;
+}
+
+.btn-blue:hover {
+    @apply bg-blue-300;
+}
+
+.btn-blue:disabled {
+    @apply bg-blue-400;
+}
+
+.btn-gray {
+    @apply text-gray-900 bg-gray-500;
+}
+
+.btn-gray:hover {
+    @apply bg-gray-400;
+}
+
+.btn-gray:disabled {
+    @apply bg-gray-300;
+}
+
+.btn-indigo {
+    @apply text-indigo-900 bg-indigo-400;
+}
+
+.btn-indigo:hover {
+    @apply bg-indigo-300;
+}
+
+.btn-indigo:disabled {
+    @apply bg-indigo-400;
+}
+
+.btn-teal {
+    @apply text-teal-900 bg-teal-400;
+}
+
+.btn-teal:hover {
+    @apply bg-teal-300;
+}
+
+.btn-teal:disabled {
+    @apply bg-teal-400;
+}
+
+.btn-red {
+    @apply text-red-900 bg-red-400;
+}
+
+.btn-red:hover {
+    @apply bg-red-300;
+}
+
+.btn-red:disabled {
+    @apply bg-red-400;
+}
+
+.btn-yellow {
+    @apply text-yellow-900 bg-yellow-400;
+}
+
+.btn-yellow:hover {
+    @apply bg-yellow-300;
+}
+
+.btn-yellow:disabled {
+    @apply bg-yellow-400;
+}
+
+@tailwind utilities;
+
+.max-h-1\/2 {
+    max-height: 50vh;
+}
+
+.max-h-64 {
+    max-height: 16rem;
+}
+
+.max-w-60 {
+    max-width: 15rem;
+}
+
+.shimmer::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg,
+            rgba(233, 233, 233, 1) 0,
+            rgba(233, 233, 233, 0.9) 50%,
+            rgba(233, 233, 233, 0.8) 100%);
+    animation: shimmer 2.5s ease-out infinite;
+    content: "";
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(0%);
+        opacity: 0;
+    }
+}
