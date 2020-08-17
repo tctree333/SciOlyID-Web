@@ -4,7 +4,7 @@ window.addEventListener('load', (event) => {
   updateImage()
 })
 
-const baseApiUrl = 'https://localhost:8000'
+const baseApiUrl = 'https://rfts.bird-id.ga'
 const urls = {
   base: baseApiUrl,
   getImage: baseApiUrl + '/verify/',

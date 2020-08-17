@@ -1,7 +1,7 @@
 const https = require('https')
 
 const baseUrls = {
-  rfts: 'https://localhost:8000'
+  rfts: 'https://rfts.bird-id.ga'
 }
 const names = {
   rfts: 'Reach For the Stars'

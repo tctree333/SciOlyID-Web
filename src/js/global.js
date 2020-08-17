@@ -1,4 +1,4 @@
-const base = 'https://localhost:8000'
+const base = 'https://rfts.bird-id.ga'
 const apiUrls = {
   base: base,
   login: base + '/user/login',
