@@ -17,8 +17,12 @@ function getJson (url) {
       rejectUnauthorized: false
     }, (resp) => {
       if (resp.statusCode === 200) {
+        let data = ''
         resp.on('data', (d) => {
-          const json = JSON.parse(d.toString())
+          data += d.toString()
+        })
+        resp.on('end', () => {
+          const json = JSON.parse(data)
           resolve(json)
         })
       } else {
