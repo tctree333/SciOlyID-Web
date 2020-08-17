@@ -6,7 +6,7 @@ const outputDir = '_site/js/'
 const exclude = /\.min\.js/
 
 const options = {
-  toplevel: true,
+  toplevel: false,
   compress: {
     passes: 2
   },
