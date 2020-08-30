@@ -1,9 +1,9 @@
-const base = 'https://rfts.bird-id.ga'
-const apiUrls = {
-  base: base,
-  login: base + '/user/login',
-  logout: base + '/user/logout',
-  profile: base + '/user/profile'
+const baseApiUrl = 'https://rfts.bird-id.ga'
+const userUrls = {
+  base: baseApiUrl,
+  login: baseApiUrl + '/user/login',
+  logout: baseApiUrl + '/user/logout',
+  profile: baseApiUrl + '/user/profile'
 }
 
 const debounce = (fn) => {
@@ -25,7 +25,7 @@ document.addEventListener('scroll', debounce(storeScroll), {
 })
 storeScroll()
 
-fetch(apiUrls.profile, {
+fetch(userUrls.profile, {
   method: 'GET',
   credentials: 'include'
 }).then((resp) => {
@@ -42,13 +42,13 @@ fetch(apiUrls.profile, {
     document.getElementById('profile').classList.remove('hidden')
     document.getElementById('btnLogin').hidden = true
     document.getElementById('btnLogout').addEventListener('click', () => {
-      location.href = apiUrls.logout
+      location.href = userUrls.logout
     })
   } else {
     document.getElementById('btnLogin').hidden = false
     document.getElementById('profile').classList.add('hidden')
     document.getElementById('btnLogin').addEventListener('click', () => {
-      const url = new URL(apiUrls.login)
+      const url = new URL(userUrls.login)
       url.searchParams.append('redirect', new URL(location.href).pathname)
       location.href = url
     })

@@ -9,7 +9,7 @@
         {# {% include "_favicons.njk" %} #}
         {# <script defer src="/js/lazysizes.min.js"></script> #}
     </head>
-    <body>
+    <body class="texture">
         {% include "_nav.njk" %}
         <header>
             {% block header %}{% endblock %}
@@ -39,7 +39,7 @@
                 <p>{{ datetime.year }}</p>
             </div>
         </footer>
-        {% block scripts %}{% endblock %}
         <script defer src="/js/global{{ '.min' if environment.prod else '' }}.js"></script>
+        {% block scripts %}{% endblock %}
     </body>
 </html>

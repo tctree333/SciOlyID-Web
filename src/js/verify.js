@@ -1,11 +1,11 @@
+/* global baseApiUrl */
 window.addEventListener('load', (event) => {
   setup()
   // popUpInstructions()
   updateImage()
 })
 
-const baseApiUrl = 'https://rfts.bird-id.ga'
-const urls = {
+const verifyUrls = {
   base: baseApiUrl,
   getImage: baseApiUrl + '/verify/',
   confirm: baseApiUrl + '/verify/confirm',
@@ -90,7 +90,7 @@ function updateImage (skip) {
   } else {
     params = {}
   }
-  getRequest(urls.getImage, params).then((stats) => {
+  getRequest(verifyUrls.getImage, params).then((stats) => {
     if (!stats) {
       return
     }
@@ -105,7 +105,7 @@ function updateImage (skip) {
     document.getElementById('displayId').innerText = stats.id.slice(0, 7)
     document.getElementById('item').innerText = stats.item
 
-    const imgUrl = new URL(urls.base)
+    const imgUrl = new URL(verifyUrls.base)
     imgUrl.pathname = stats.url
     document.getElementById('mainImg').src = imgUrl.toString()
 
@@ -137,7 +137,7 @@ function updateImage (skip) {
 }
 
 function updateStats () {
-  getRequest(urls.stats, {
+  getRequest(verifyUrls.stats, {
     id: imageId.value
   }).then((stats) => {
     if (!stats) {
@@ -190,7 +190,7 @@ function genValidation (confirmation) {
 }
 
 async function postValidation (data) {
-  const resp = await fetch(urls.confirm, {
+  const resp = await fetch(verifyUrls.confirm, {
     method: 'POST',
     credentials: 'include',
     body: data

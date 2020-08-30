@@ -1,0 +1,41 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+    <title>Image Counts | SciOlyID</title>
+{% endblock %}
+
+{% block header %}
+    <div class="mt-4">
+        <h1 class="px-5 mx-auto mt-8 mb-6 text-4xl font-semibold text-center">Image Counts: <div>{{botInfo.name}}</div>
+        </h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container max-w-4xl px-5 pb-4 mx-auto text-gray-800 bg-white sm:px-8">
+        <p class="m-2 text-xl font-medium text-right rounded">Total Images: <span id="total">{{ botInfo.media.total }}</span></p>
+        <ul id="list" class="my-4 ml-2 text-xl text-center list-inside">
+            {% for item in botInfo.media.counts %}
+                {% if item.group %}
+                    <li class="pl-3 mb-3 font-semibold" data-group="true">
+                        <span class="text-2xl" data-name>{{ item.name }}</span>
+                        <svg class="inline w-6 h-6 ml-2 text-indigo-700 fill-current lg-chevron-align" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                        <ul class="flex flex-row flex-wrap items-center justify-center mb-8 ml-4 font-normal list-inside item-list">
+                            {% for subitem in item.value %}
+                                <li class="mx-4 my-2">{{ subitem.name }}: <span id="item-{{ subitem.name }}" class="font-medium" data-value>{{ subitem.value }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="pl-3 mb-3 font-normal" data-group="false">{{ item.name }}: <span id="item-{{ item.name }}" class="font-semibold" data-value>{{ item.value }}</span></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script defer src="/js/count{{ '.min' if environment.prod else '' }}.js"></script>
+{% endblock %}

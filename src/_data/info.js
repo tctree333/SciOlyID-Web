@@ -8,7 +8,8 @@ const names = {
 }
 const urlPaths = {
   items: '/about/list',
-  info: '/about/info'
+  info: '/about/info',
+  media: '/about/count'
 }
 
 function getJson (url) {

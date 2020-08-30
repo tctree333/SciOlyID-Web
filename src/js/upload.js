@@ -1,5 +1,5 @@
-const baseApiUrl = 'https://rfts.bird-id.ga'
-const urls = {
+/* global baseApiUrl */
+const uploadUrls = {
   base: baseApiUrl,
   upload: baseApiUrl + '/upload/',
   uploaded: baseApiUrl + '/upload/uploaded',
@@ -19,7 +19,7 @@ const VALID_MIMETYPES = ['image/jpeg', 'image/png']
 window.Dropzone.autoDiscover = false
 const previewTemplate = document.getElementById('template').innerHTML
 const dropzone = new window.Dropzone(document.body, {
-  url: urls.upload,
+  url: uploadUrls.upload,
   thumbnailWidth: 138,
   thumbnailHeight: 138,
   previewTemplate: previewTemplate,
@@ -74,7 +74,7 @@ function setupSave () {
     document.getElementById('btnUrlOk').disabled = true
     saveInfo.hidden = false
 
-    getJson(urls.save, {
+    getJson(uploadUrls.save, {
       404: 'No images uploaded!',
       400: 'Save in progress!'
     }).then((data) => {
@@ -91,7 +91,7 @@ function setupSave () {
       saveStatus.innerText = data.status.join(', ')
 
       const checkStatus = setInterval(() => {
-        getJson(urls.status, {
+        getJson(uploadUrls.status, {
           404: 'Not currently saving!'
         }).then((data) => {
           if (!data) {
@@ -179,7 +179,7 @@ function setupAddFromUrl () {
       error('Invalid Url!')
       return
     }
-    const url = new URL(urls.remote)
+    const url = new URL(uploadUrls.remote)
     url.searchParams.append('url', encodeURI(input.value))
     fetchImageFile(url, new URL(input.value).pathname.split('/').pop(), {
       400: 'Invalid URL!',
@@ -240,7 +240,7 @@ function fileItemError (file, message) {
 }
 
 function updateUploadedCount () {
-  getJson(urls.uploaded).then((files) => {
+  getJson(uploadUrls.uploaded).then((files) => {
     let count = 0
     if (files) {
       for (const item in files) {
@@ -262,13 +262,13 @@ function updateUploadedCount () {
 }
 
 function displayUploadedFiles () {
-  getJson(urls.uploaded).then((files) => {
+  getJson(uploadUrls.uploaded).then((files) => {
     if (!files) {
       return
     }
     for (const item in files) {
       files[item].forEach((filename) => {
-        fetchImageFile(`${urls.image}/${item}/${filename}`, 'Previously Uploaded').then((file) => {
+        fetchImageFile(`${uploadUrls.image}/${item}/${filename}`, 'Previously Uploaded').then((file) => {
           file.fromServer = true
           file.serverAssignedId = filename.split('.')[0]
           file.idItemType = item
@@ -326,7 +326,7 @@ async function fetchImageFile (url, name, message) {
 }
 
 async function deleteImage (id) {
-  const resp = await fetch(urls.delete + id, {
+  const resp = await fetch(uploadUrls.delete + id, {
     method: 'DELETE',
     credentials: 'include'
   })
