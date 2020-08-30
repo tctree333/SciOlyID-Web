@@ -1,4 +1,8 @@
-const baseApiUrl = 'https://rfts.bird-id.ga'
+const apiUrls = {
+  rfts: 'https://rfts.bird-id.ga',
+  fossils: 'https://fossils.bird-id.ga'
+}
+const baseApiUrl = apiUrls[window.location.pathname.split('/')[1]]
 const userUrls = {
   base: baseApiUrl,
   login: baseApiUrl + '/user/login',
