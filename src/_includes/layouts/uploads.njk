@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container max-w-4xl px-5 pb-4 mx-auto bg-white sm:px-8">
+    <div class="container max-w-4xl px-5 py-4 mx-auto bg-white sm:px-8">
         <div class="flex flex-wrap items-center justify-center my-2">
             <button id="clickable" class="p-2 m-2 btn btn-teal">Add files</button>
             <button id="btnUrl" class="p-2 m-2 btn btn-indigo">Add file from URL</button>
@@ -28,10 +28,9 @@
             <p id="saveStatus" class="text-center text-gray-600"></p>
         </div>
         <div id="previews" class="mx-auto my-4 bg-gray-300 rounded-md">
-            <div class="w-full p-5 mx-auto max-w-60" data-placeholder>
-                <img src="/icons/illustrations/add.svg"/>
-                <p class="mt-2 text-sm text-center text-gray-600">You don't have any images right now.<br>Get started by
-                adding some!</p>
+            <div class="p-5" data-placeholder>
+                <img class="w-full mx-auto max-w-60" src="/icons/illustrations/add.svg"/>
+                <p class="max-w-sm mx-auto mt-4 text-base text-center text-gray-600">You don't have any images right now.<br>Get started by dropping some here, or check out <a href="/{{ botInfo.id }}/count/" class="underline">which items need images</a>.</p>
             </div>
         </div>
     </div>
