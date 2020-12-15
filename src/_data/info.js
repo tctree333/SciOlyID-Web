@@ -1,8 +1,8 @@
 const https = require('https')
 
 const baseUrls = {
-  rfts: 'https://rfts.bird-id.ga',
-  fossils: 'https://fossils.bird-id.ga'
+  rfts: 'https://rfts.sciolyid.org',
+  fossils: 'https://fossils.sciolyid.org'
 }
 const names = {
   rfts: 'Reach For the Stars',
