@@ -1,17 +1,19 @@
 const https = require('https')
 
 const baseUrls = {
-  // rfts: 'https://rfts.sciolyid.org',
-  // fossils: 'https://fossils.sciolyid.org'
+  minerobo: 'https://minerobo.sciolyid.org',
 }
 const names = {
-  // rfts: 'Reach For the Stars',
-  // fossils: 'Fossil ID'
+  minerobo: 'Rocks and Minerals',
 }
 const urlPaths = {
   items: '/about/list',
   info: '/about/info',
   media: '/about/count',
+}
+
+const config = {
+  minerobo: { upload: false, verify: true },
 }
 
 function getJson(url) {
@@ -52,6 +54,7 @@ async function fetchInfo() {
     const obj = {
       name: names[base],
       id: base,
+      ...config[base],
     }
     for (const path in urlPaths) {
       const url = baseUrl + urlPaths[path]
