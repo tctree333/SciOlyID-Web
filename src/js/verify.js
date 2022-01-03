@@ -18,7 +18,12 @@ const classes = {
   duplicateImg: 'inline-block mx-auto mt-2 mb-4 rounded max-h-64 img:m-2'
 }
 
-let offset = 0
+function offset (set = undefined) {
+  if (set === undefined) {
+    return parseInt(localStorage.getItem('offset'))
+  }
+  localStorage.setItem('offset', set)
+}
 
 function setup () {
   [
@@ -83,7 +88,7 @@ function updateImage () {
   clear()
 
   getRequest(verifyUrls.getImage, {
-    offset: offset + 1
+    offset: offset() + 1
   }).then((stats) => {
     if (!stats) {
       return
@@ -93,7 +98,7 @@ function updateImage () {
       hide()
       return
     }
-    offset = stats.offset
+    offset(stats.offset)
 
     imageId.value = stats.id
     document.getElementById('displayId').innerText = stats.id.slice(0, 7)
