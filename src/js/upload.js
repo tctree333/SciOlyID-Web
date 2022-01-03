@@ -228,6 +228,12 @@ function alertUser (message, success) {
   setTimeout(() => {
     alertTemplate.classList.remove('opacity-0')
   }, 200)
+  setTimeout(() => {
+    alertTemplate.classList.add('opacity-0')
+    setTimeout(() => {
+      alertTemplate.parentNode.removeChild(alertTemplate)
+    }, 500)
+  }, 20 * 1000)
 }
 
 function fileItemError (file, message) {
