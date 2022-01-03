@@ -81,16 +81,10 @@ function clear () {
 
 function updateImage (skip) {
   clear()
-  let params
 
-  if (skip) {
-    params = {
-      offset: offset + 1
-    }
-  } else {
-    params = {}
-  }
-  getRequest(verifyUrls.getImage, params).then((stats) => {
+  getRequest(verifyUrls.getImage, {
+    offset: offset + 1
+  }).then((stats) => {
     if (!stats) {
       return
     }
