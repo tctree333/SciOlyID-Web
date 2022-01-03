@@ -93,14 +93,14 @@ function clear () {
   duplicateContainer.appendChild(text)
 }
 
-function updateImage (offset = undefined) {
+function updateImage (_offset = undefined) {
   clear()
 
-  if (offset === undefined) {
-    offset = offset() + 1
+  if (_offset === undefined) {
+    _offset = offset() + 1
   }
 
-  getRequest(verifyUrls.getImage, { offset }).then((stats) => {
+  getRequest(verifyUrls.getImage, { offset: _offset }).then((stats) => {
     if (!stats) {
       return
     }
