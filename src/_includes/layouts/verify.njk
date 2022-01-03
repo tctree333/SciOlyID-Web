@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-    <div id="verifyContent" class="container max-w-4xl px-5 py-4 mx-auto mb-4 bg-white sm:px-8">
+    <div id="verifyContent" class="container max-w-4xl px-5 py-4 mx-auto mb-4 bg-white bg-opacity-50 sm:px-8">
         <p class="text-xl">Is this an image of <span id="item" class="font-semibold"></span>?</p>
         <div class="flex items-center justify-between mt-4 mb-2">
             <p class="font-semibold">Image ID: <span id="displayId" class="font-normal"></span></p>
@@ -59,7 +59,7 @@
                     <li class="mb-2">
                         <span class="p-1 px-2 font-medium text-green-900 bg-green-200 rounded-lg">Valid</span> - The object to be identified is clearly visible and is of the correct item. Text revealing the answer is not visible. The image is not a duplicate of an already existing image.</li>
                     <li class="mb-2">
-                        <span class="p-1 px-2 font-medium text-yellow-900 bg-yellow-300 rounded-lg">Duplicate</span> - The image is a duplicate of an already existing image.</li>
+                        <span class="p-1 px-2 font-medium text-yellow-900 bg-yellow-300 rounded-lg">Duplicate</span> - The image is a duplicate of an already existing image. You will be presented with likely duplicates by the bot if they exist; only mark as duplicate if they are the same image.</li>
                     <li class="mb-2">
                         <span class="p-1 px-2 font-medium text-red-900 bg-red-200 rounded-lg">Invalid</span> - The object to be identified is not clearly visible or is incorrect, or spoiler text is visible.</li>
                 </ul>
