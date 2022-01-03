@@ -19,12 +19,16 @@
                         <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                     </svg>
                     <ul class="block mb-4 ml-6 text-xl font-normal list-disc list-inside">
-                        <li>
-                            <a class="underline" href="/{{ item.id }}/upload/">Upload Images</a>
-                        </li>
-                        <li>
-                            <a class="underline" href="/{{ item.id }}/verify/">Verify Images</a>
-                        </li>
+                        {% if item.upload %}
+                            <li>
+                                <a class="underline" href="/{{ item.id }}/upload/">Upload Images</a>
+                            </li>
+                        {% endif %}
+                        {% if item.verify %}
+                            <li>
+                                <a class="underline" href="/{{ item.id }}/verify/">Verify Images</a>
+                            </li>
+                        {% endif %}
                         <li>
                             <a class="underline" href="/{{ item.id }}/count/">Image Counts</a>
                         </li>
