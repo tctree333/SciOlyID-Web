@@ -30,7 +30,7 @@ function setup () {
     document.getElementById(item[0]).disabled = true
   })
   document.getElementById('btnSkip').addEventListener('click', () => {
-    updateImage(true)
+    updateImage()
   })
 }
 
@@ -79,7 +79,7 @@ function clear () {
   duplicateContainer.appendChild(text)
 }
 
-function updateImage (skip) {
+function updateImage () {
   clear()
 
   getRequest(verifyUrls.getImage, {
