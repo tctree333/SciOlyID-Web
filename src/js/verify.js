@@ -37,6 +37,9 @@ function setup () {
   document.getElementById('btnSkip').addEventListener('click', () => {
     updateImage()
   })
+  document.getElementById('btnBack').addEventListener('click', () => {
+    updateImage(offset() - 1)
+  })
 }
 
 // function popUpInstructions () {}
@@ -90,12 +93,14 @@ function clear () {
   duplicateContainer.appendChild(text)
 }
 
-function updateImage () {
+function updateImage (offset = undefined) {
   clear()
 
-  getRequest(verifyUrls.getImage, {
-    offset: offset() + 1
-  }).then((stats) => {
+  if (offset === undefined) {
+    offset = offset() + 1
+  }
+
+  getRequest(verifyUrls.getImage, { offset }).then((stats) => {
     if (!stats) {
       return
     }
