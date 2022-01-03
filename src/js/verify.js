@@ -83,7 +83,7 @@ function clear () {
   imageId.value = ''
   document.getElementById('displayId').innerText = 'loading...'
   document.getElementById('item').innerText = '... '
-  document.getElementById('mainImg').src = '/icons/illustrations/loading.png'
+  document.getElementById('mainImg').src = '/icons/illustrations/loading.svg'
   const duplicateContainer = document.getElementById('duplicates')
   duplicateContainer.hidden = true
   const text = duplicateContainer.querySelector('#duplicateText')
