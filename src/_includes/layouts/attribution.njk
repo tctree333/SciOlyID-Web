@@ -1,0 +1,24 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+    <title>Image Attributions | SciOlyID</title>
+{% endblock %}
+
+{% block header %}
+    <div class="mt-4">
+        <h1 class="px-5 mx-auto mt-8 mb-6 text-4xl font-semibold text-center">Image Attributions: Minerobo</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container max-w-4xl px-2 py-4 mx-auto prose prose-lg text-gray-800 bg-white bg-opacity-50 sm:px-4 xl:prose-xl">
+        <ul>
+            <li>Images from <a href="https://www.minerals.net/">Minerals.net</a> are licensed for educational use.</li>
+            {% for _, attribution in minerobo_attributions %}
+                <li>{{ attribution | md | safe }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block scripts %}{% endblock %}
